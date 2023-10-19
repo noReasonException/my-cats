@@ -1,4 +1,6 @@
 package mycats
+import mycats.lib.instances.OptionInstances.optionalSemigroupalInstance
+import mycats.lib.syntax.SemigroupalSyntax.SemigroupalSyntaxOps
 
 class SemigroupalSpec extends org.scalatest.funsuite.AnyFunSuite {
   test("Semigroupal Option") {

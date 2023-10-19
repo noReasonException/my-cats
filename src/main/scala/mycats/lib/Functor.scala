@@ -16,6 +16,7 @@ package mycats.lib
   │             ├────────────────────►│             │
   └─────────────┘                     └─────────────┘
  */
+
 trait Functor[F[_]] extends Invariant[F]{
 
   def map[A,B](fa:F[A])(f:A=>B):F[B]
