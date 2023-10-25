@@ -14,8 +14,8 @@ package mycats.lib
                      │     │             │               │     │             │
   ┌────────────┐     │     └─────────────┘               │     └─────────────┘
   │Apply       │     │                                   │
-  │            ├─────┤                                   │
-  │            │     │     ┌─────────────┐               │     ┌─────────────┐
+  │Composeable ├─────┤                                   │
+  │Morphism    │     │     ┌─────────────┐               │     ┌─────────────┐
   └────────────┘     │     │Functor      │               └────►│Invariant    │
                      └────►│             │                     │             │
                            │             ├────────────────────►│             │
@@ -25,6 +25,18 @@ package mycats.lib
 
 
  */
-trait Apply {
+
+//While a functor is a morphism between categories while maintaining the algebraic structure, Applicative is
+//a functor that can go from one category to the other, while the morphism itself is a category (is effectful)
+//is basically a Semigroupoid Functor.
+trait Apply[F[_]] extends InvariantSemigroupal[F] with Functor[F] {
+
+  //ap is nessesary to define the heart of the 'Apply' functor, the composeability.
+  override def product[A, B](a:  F[A], b:  F[B]): F[(A, B)] = {
+    val fn:F[A=>(A,B)] = map(b)(v=>(a:A)=>(a,v))
+    ap(fn)(a)
+  }
+
+  def ap[A,B](ff:F[A=>B])(fa:F[A]):F[B]
 
 }
