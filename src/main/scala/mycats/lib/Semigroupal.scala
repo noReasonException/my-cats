@@ -8,5 +8,5 @@ package mycats.lib
  * calling product with map allows one to apply a function of arbitrary arity to multiple independent effectful values.
  */
 trait Semigroupal[F[_]] {
-  def product[A,B](a:F[A],b:F[B]):F[Tuple2[A,B]]
+  def product[A,B](a:F[A],b:F[B]):F[(A,B)]
 }
