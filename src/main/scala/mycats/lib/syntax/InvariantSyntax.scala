@@ -1,5 +1,5 @@
 package mycats.lib.syntax
-import mycats.lib.Invariant
+import mycats.lib.morphisms.Invariant
 
 object InvariantSyntax {
   implicit class InvariantSyntaxOps[F[_],A](fa:F[A]){

@@ -1,5 +1,5 @@
 package mycats.impl
-import mycats.lib.Apply
+import mycats.lib.morphisms.Apply
 
 trait Validated[F[_],A,B] extends Apply[F]{
   override def ap[A, B](ff:  F[A => B])(fa:  F[A]): F[B] = ???

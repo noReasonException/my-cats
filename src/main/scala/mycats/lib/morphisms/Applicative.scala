@@ -1,5 +1,4 @@
-package mycats.lib
-
+package mycats.lib.morphisms
 
 /*
 

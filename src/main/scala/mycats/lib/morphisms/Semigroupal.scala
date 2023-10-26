@@ -1,5 +1,4 @@
-package mycats.lib
-
+package mycats.lib.morphisms
 
 /**
  * Semigroupal captures the idea of composing independent effectful values.

@@ -1,6 +1,6 @@
 package mycats.lib.instances
 
-import mycats.lib.Semigroupal
+import mycats.lib.morphisms.Semigroupal
 
 object OptionInstances {
 

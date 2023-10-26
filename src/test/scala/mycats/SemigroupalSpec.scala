@@ -4,7 +4,7 @@ import mycats.lib.syntax.SemigroupalSyntax.SemigroupalSyntaxOps
 
 class SemigroupalSpec extends org.scalatest.funsuite.AnyFunSuite {
   test("Semigroupal Option") {
-    import mycats.lib.Semigroupal
+    import mycats.lib.morphisms.Semigroupal
 
     val opt1:Option[Int]=Some(32)
     val opt2:Option[String]=Some("Hello world")

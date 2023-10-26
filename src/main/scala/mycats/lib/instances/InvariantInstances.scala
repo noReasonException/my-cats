@@ -1,5 +1,6 @@
 package mycats.lib.instances
-import mycats.lib.{Invariant, Semigroup}
+import mycats.lib.morphisms.Invariant
+import mycats.lib.obj.Semigroup
 
 object InvariantInstances {
   implicit val invariantSemigroup:Invariant[Semigroup] = new Invariant[Semigroup] {
