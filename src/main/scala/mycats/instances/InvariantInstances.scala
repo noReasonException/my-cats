@@ -1,4 +1,5 @@
-package mycats.lib.instances
+package mycats.instances
+
 import mycats.lib.morphisms.Invariant
 import mycats.lib.obj.Semigroup
 

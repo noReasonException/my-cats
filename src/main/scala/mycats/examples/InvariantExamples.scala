@@ -1,6 +1,5 @@
 package mycats.examples
 import mycats.examples.common.Expense
-import mycats.lib.instances.InvariantInstances.invariantSemigroup
 import mycats.lib.obj.Semigroup
 import mycats.lib.syntax.InvariantSyntax.InvariantSyntaxOps
 
