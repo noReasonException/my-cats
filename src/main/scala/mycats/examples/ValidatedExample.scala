@@ -6,6 +6,7 @@ import mycats.examples.common.Utils.NonEmptyList
 import mycats.instances.ValidatedInstances.validatedApplicativeErrorInstance
 import mycats.lib.obj.Semigroup
 import mycats.lib.syntax.SemigroupalSyntax
+import mycats.lib.syntax.TupleCombineOps.Tuple2SemigroupalOps
 object ValidatedExample {
   type ValidatedNel[A] = Validated[NonEmptyList[String],A]
   val validatedNelInstance = validatedApplicativeErrorInstance[NonEmptyList[String],Long]
@@ -28,8 +29,12 @@ object ValidatedExample {
     validatedNelInstance.map(product)((Expense.apply _).tupled)
 
   }
+  private def mkExpenseMapN(id:Long,amount:Double):ValidatedNel[Expense] =
+    (expenseIdValidation(id), expenseAmountValidation(amount)).mapN((Expense.apply _).tupled)
+
+
   def main(args: Array[String]): Unit = {
-    val valid = mkExpense(-1,-12.0)
+    val valid = mkExpenseMapN(-1,-12.0)
     print(valid)
 
   }
