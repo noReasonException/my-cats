@@ -5,8 +5,7 @@ import mycats.examples.common.Expense
 import mycats.examples.common.Utils.NonEmptyList
 import mycats.instances.ValidatedInstances.validatedApplicativeErrorInstance
 import mycats.lib.obj.Semigroup
-import mycats.lib.syntax.SemigroupalSyntax
-import mycats.lib.syntax.TupleCombineOps.Tuple2SemigroupalOps
+import mycats.lib.syntax.ApplySyntax.Tuple2ApplyOps
 object ValidatedExample {
   type ValidatedNel[A] = Validated[NonEmptyList[String],A]
   val validatedNelInstance = validatedApplicativeErrorInstance[NonEmptyList[String],Long]
