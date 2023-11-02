@@ -1,4 +1,5 @@
 package mycats.lib.morphisms
+import mycats.lib.morphisms.arity.ApplyArityFunctions
 
 /**
  *
@@ -29,9 +30,9 @@ package mycats.lib.morphisms
 //a functor that can go from one category to the other, while the morphism itself is a category (is effectful)
 //is basically a Semigroupoid Functor.
 
-trait Apply[F[_]] extends InvariantSemigroupal[F] with Functor[F] {
+trait Apply[F[_]] extends InvariantSemigroupal[F] with Functor[F] with ApplyArityFunctions[F] {
 
-  //ap is nessesary to define the heart of the 'Apply' functor, the compose ability.
+  //ap is necessary to define the heart of the 'Apply' functor, the compose ability.
   override def product[A, B](a:  F[A], b:  F[B]): F[(A, B)] = {
     val fn:F[A=>(A,B)] = map(b)(v=>(a:A)=>(a,v))
     ap(fn)(a)

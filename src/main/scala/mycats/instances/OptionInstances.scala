@@ -1,6 +1,6 @@
 package mycats.instances
 
-import mycats.lib.morphisms.Semigroupal
+import mycats.lib.morphisms.{Apply, Semigroupal}
 
 object OptionInstances {
 
@@ -12,5 +12,18 @@ object OptionInstances {
       }
     }
   }
+  implicit val optionalApplyInstance:Apply[Option] = new Apply[Option] {
+    override def product[A, B](a:  Option[A], b:  Option[B]): Option[(A, B)] = {
+      (a,b) match {
+        case (Some(a),Some(b))=>Some((a,b))
+        case _ => None
+      }
+    }
+    override def ap[A, B](ff:  Option[A => B])(fa:  Option[A]): Option[B] = ???
+    override def map[A, B](fa:  Option[A])(f:  A => B): Option[B] = fa match {
+      case Some(value) => Some(f(value))
+      case None => None
+    }
+}
 
 }
