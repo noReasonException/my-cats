@@ -7,12 +7,21 @@ import mycats.examples.common.Utils.NonEmptyList
 import mycats.instances.ValidatedNelInstances.validatedNelInstance
 import mycats.lib.syntax.ApplySyntax.Tuple2ApplyOps
 import mycats.instances.ValidatedNelInstances._
+import mycats.lib.syntax.BiFunctorSyntax.BiFunctorSyntaxOps
 import mycats.lib.syntax.SemigroupSyntax._
 class ValidatedNelInstancesSpec extends org.scalatest.funsuite.AnyFunSuite {
   test("Semigroup NonEmptyList: combine should behave as expected") {
     val nonEmpty1:NonEmptyList[Int] = 1::2::3::Nil
     val nonEmpty2:NonEmptyList[Int] = 4::5::6::Nil
     assert(nonEmpty1.combine(nonEmpty2)==(1 to 6).toList,"Semigroupal's .product does not return F[(A,B)] when applied in Option Algebra")
+  }
+  test("ValidatedNel BiFunctor: bimap should transform valid context") {
+    val validatedNel:ValidatedNel[Int] = Valid(42)
+    assert(validatedNel.bimap(_.headOption)(String.valueOf)==Valid("42"),"Semigroupal's .product does not return F[(A,B)] when applied in Option Algebra")
+  }
+  test("ValidatedNel BiFunctor: bimap should transform invalid context") {
+    val validatedNel:ValidatedNel[Int] = Invalid("Error"::Nil)
+    assert(validatedNel.bimap(_.head)(String.valueOf)==Invalid("Error"),"Semigroupal's .product does not return F[(A,B)] when applied in Option Algebra")
   }
   //BiFunctor (bimap)
   //ApplicativeError (raiseError,handleErrorWith,handleError)
