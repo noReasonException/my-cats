@@ -9,4 +9,7 @@ object ApplySyntax {
     def mapN[C](f:Tuple2[A,B]=>C)(implicit apply:Apply[F]): F[C] =
       apply.map[(A,B),C](apply.product[A,B](ab._1,ab._2))(f)
   }
+  implicit class applySyntaxOps[F[_],A](fa:F[A]){
+    def ap[B](f:F[A=>B])(implicit applyF:Apply[F]):F[B]=applyF.ap(f)(fa)
+  }
 }

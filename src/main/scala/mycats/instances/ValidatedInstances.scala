@@ -6,7 +6,7 @@ import mycats.lib.obj.Semigroup
 
 object ValidatedInstances {
 
-  implicit def validatedApplicativeErrorInstance[E,A](implicit semigroupOfE:Semigroup[E])=
+  implicit def validatedApplicativeErrorInstance[E](implicit semigroupOfE:Semigroup[E])=
     new ApplicativeError[({type Valid[C] = Validated[E, C]})#Valid,E] with BiFunctor[Validated]{
       override def raiseError[A](e:  E): Validated[E, A] = Invalid(e)
       override def handleErrorWith[A](fa:  Validated[E, A])(f:  E => Validated[E, A]): Validated[E, A] = fa match {
@@ -34,3 +34,4 @@ object ValidatedInstances {
       }
   }
 }
+

@@ -11,7 +11,7 @@ object OptionInstances {
         case _ => None
       }
     }
-    override def ap[A, B](ff:  Option[A => B])(fa:  Option[A]): Option[B] = ???
+    override def ap[A, B](ff:  Option[A => B])(fa:  Option[A]): Option[B] = map(product(ff,fa))(tu2=>tu2._1(tu2._2))
     override def map[A, B](fa:  Option[A])(f:  A => B): Option[B] = fa match {
       case Some(value) => Some(f(value))
       case None => None
