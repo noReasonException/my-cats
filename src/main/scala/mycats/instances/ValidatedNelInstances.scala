@@ -8,6 +8,7 @@ import mycats.lib.obj.Semigroup
 
 object ValidatedNelInstances {
   implicit def semigroupOfNonEmptyList[A]:Semigroup[NonEmptyList[A]] = (x: NonEmptyList[A], y: NonEmptyList[A]) => x.appendedAll(y)
-  implicit val validatedNelInstance: ApplicativeError[({type Valid[C] = Validated[NonEmptyList[String], C]})#Valid, NonEmptyList[String]] with BiFunctor[Validated] = validatedApplicativeErrorInstance[NonEmptyList[String]]
+  implicit val validatedNelInstance: ApplicativeError[({type Valid[C] = Validated[NonEmptyList[String], C]})#Valid, NonEmptyList[String]] with BiFunctor[Validated] =
+    validatedApplicativeErrorInstance[NonEmptyList[String]]
 
 }
