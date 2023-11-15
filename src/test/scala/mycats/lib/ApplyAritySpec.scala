@@ -1,6 +1,6 @@
 package mycats.lib
 import mycats.lib.morphisms.Apply
-import mycats.instances.OptionInstances.optionalApplyInstance
+import mycats.instances.Option.optionalApplyInstance
 import mycats.lib.syntax.ApplySyntax.applyAritySyntaxOps
 
 class ApplyAritySpec extends org.scalatest.funsuite.AnyFunSuite {

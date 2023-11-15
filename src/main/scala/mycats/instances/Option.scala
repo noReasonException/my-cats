@@ -2,7 +2,7 @@ package mycats.instances
 
 import mycats.lib.morphisms.{Apply, Semigroupal}
 
-object OptionInstances {
+object Option {
 
   implicit val optionalApplyInstance:Apply[Option] = new Apply[Option] {
     override def product[A, B](a:  Option[A], b:  Option[B]): Option[(A, B)] = {

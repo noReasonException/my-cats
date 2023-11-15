@@ -1,10 +1,10 @@
 package mycats.instances
 
-import mycats.instances.OptionInstances._
+import mycats.instances.Option._
 import mycats.lib.syntax.ApplySyntax.applySyntaxOps
 import mycats.lib.syntax.InvariantSyntax.InvariantSyntaxOps
 import mycats.lib.syntax.SemigroupalSyntax.SemigroupalSyntaxOps
-class OptionInstancesSpec extends org.scalatest.funsuite.AnyFunSuite {
+class OptionSpec extends org.scalatest.funsuite.AnyFunSuite {
   val opt1:Option[String]=Some("The meaning of life")
   val opt2:Option[Int]=Some(42)
   val opt3:Option[String]=Some("42")

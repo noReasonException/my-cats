@@ -4,9 +4,9 @@ import mycats.algebras.ValidatedNel.ValidatedNel
 import mycats.algebras.{Invalid, Valid, Validated}
 import mycats.examples.common.Expense
 import mycats.examples.common.Utils.NonEmptyList
-import mycats.instances.ValidatedNelInstances.{semigroupOfNonEmptyList, validatedNelInstance}
+import mycats.instances.ValidatedNel.{semigroupOfNonEmptyList, validatedNelInstance}
 import mycats.lib.syntax.ApplySyntax.Tuple2ApplyOps
-import mycats.instances.ValidatedNelInstances._
+import mycats.instances.ValidatedNel._
 object ValidatedExample {
   private def expenseIdValidation(expenseID:Long):ValidatedNel[Long]=
     if(expenseID<=0) Invalid(List("Expense ID cannot be negative")) else Valid(expenseID)

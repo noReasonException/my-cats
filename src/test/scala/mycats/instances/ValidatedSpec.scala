@@ -4,16 +4,16 @@ import mycats.algebras.ValidatedNel.ValidatedNel
 import mycats.algebras.{Invalid, Valid, Validated}
 import mycats.examples.common.Expense
 import mycats.examples.common.Utils.NonEmptyList
-import mycats.instances.ValidatedNelInstances.validatedNelInstance
+import mycats.instances.ValidatedNel.validatedNelInstance
 import mycats.lib.syntax.ApplySyntax.{Tuple2ApplyOps, applySyntaxOps}
-import mycats.instances.ValidatedNelInstances._
+import mycats.instances.ValidatedNel._
 import mycats.lib.syntax.BiFunctorSyntax.BiFunctorSyntaxOps
 import mycats.lib.syntax.SemigroupSyntax._
 import mycats.lib.syntax.ApplicativeErrorSyntax._
-import mycats.instances.ValidatedNelInstances.validatedNelInstance._
+import mycats.instances.ValidatedNel.validatedNelInstance._
 import mycats.lib.syntax.FunctorSyntax.FunctorSyntaxOps
 import mycats.lib.syntax.SemigroupalSyntax.SemigroupalSyntaxOps
-class ValidatedNelInstancesSpec extends org.scalatest.funsuite.AnyFunSuite {
+class ValidatedSpec extends org.scalatest.funsuite.AnyFunSuite {
   test("Semigroup NonEmptyList: combine should behave as expected") {
     val nonEmpty1:NonEmptyList[Int] = 1::2::3::Nil
     val nonEmpty2:NonEmptyList[Int] = 4::5::6::Nil

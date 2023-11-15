@@ -1,8 +1,8 @@
 package mycats
 
 package object instances {
-  import InvariantInstances._
-  import OptionInstances._
-  import ValidatedInstances._
+  import Invariant._
+  import Option._
+  import Validated._
 
 }

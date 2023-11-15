@@ -4,7 +4,7 @@ import mycats.lib.morphisms.bi.BiFunctor
 import mycats.lib.morphisms.error.ApplicativeError
 import mycats.lib.obj.Semigroup
 
-object ValidatedInstances {
+object Validated {
 
   implicit def validatedApplicativeErrorInstance[E](implicit semigroupOfE:Semigroup[E]): ApplicativeError[({
   type Valid[C] = Validated[E, C]})#Valid, E] with BiFunctor[Validated]=
