@@ -1,17 +1,10 @@
 package mycats.instances
+import mycats.lib.morphisms.bi.BiFunctor
 import mycats.lib.morphisms.error.MonadError
 import mycats.lib.obj.Semigroup
 
 object Either {
-  implicit def eitherMonadErrorInstance[E](implicit semiOfE:Semigroup[E]) = new MonadError[({type F[C] = Either[E,C]})#F,E] {
-
-    override def ensure[A](fa:  Either[E, A])(error:  =>E)(predicate:  A => Boolean): Either[E, A] = ensureOr(fa)(_=>error)(predicate)
-
-    override def ensureOr[A](fa:  Either[E, A])(error:  A => E)(predicate:  A => Boolean): Either[E, A] = fa match {
-      case p@Right(value) if predicate(value) => p
-      case Right(value) => Left(error(value))
-      case p=>p
-    }
+  implicit def eitherMonadErrorInstance[E] = new MonadError[({type F[C] = Either[E,C]})#F,E] with BiFunctor[Either] {
 
     override def adaptError[A](fa:  Either[E, A])(pf:  PartialFunction[E, E]): Either[E, A] = fa match {
       case Left(value) => Left(pf.orElse[E,E]({case e=>e})(value))
@@ -36,10 +29,15 @@ object Either {
       case (Right(f),Right(a))=>Right(f(a))
       case (Left(f),_)=>Left(f)
       case (_,Left(a))=>Left(a)
-      case (Left(f),Left(a))=>Left(semiOfE.combine(f,a))
 
     }
 
     override def map[A, B](fa:  Either[E, A])(f:  A => B): Either[E, B] = flatMap(fa)(f andThen pure)
-  }
+
+    override def bimap[A, B, C, D](fab:  Either[A, B])(fac:  A => C)(fbd:  B => D): Either[C, D] =
+      fab match {
+        case Left(value) => Left(fac(value))
+        case Right(value) => Right(fbd(value))
+      }
+    }
 }
